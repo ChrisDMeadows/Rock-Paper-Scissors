@@ -25,7 +25,6 @@
    
 
   function playRound(computerSelection,playerSelection) {
-  
     if (playerSelection == computerSelection) {
       return "Draw!";
     } else if (playerSelection == "rock" && computerSelection == "paper") {
@@ -54,14 +53,10 @@
       for (var i = 1; i <= 2; i++) {
 
         const computerSelection1 = computerPlay();
-        
-        
 
         const playerSelection1 = prompt("Choose Rock, Paper, or Scissors.").toLowerCase();
-       
-
-        
-  console.log(playRound(computerSelection1,playerSelection1));
+      
+        console.log(playRound(computerSelection1,playerSelection1));
       }
 
       if (playerScore == computerScore) {
