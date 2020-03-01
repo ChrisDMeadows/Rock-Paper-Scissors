@@ -44,13 +44,16 @@
       return "You Lose! Rock beats Scissors";
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
       playerScore++
-      return "You Win! Scissors beats Paper";
+      return "You Win! Scissors beats Paper"; 
+    } else {
+      return "Error, selection not found"
     }
+   }
     
-  }
+  
 
   function game(){
-      for (var i = 1; i <= 2; i++) {
+      for (var i = 1; i <= 5; i++) {
 
         const computerSelection1 = computerPlay();
 
