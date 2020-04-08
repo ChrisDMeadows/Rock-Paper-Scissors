@@ -1,7 +1,5 @@
 
- let playerScore = document.getElementById("player-score").innerHTML = 0;
- let computerScore = document.getElementById("computer-score").innerHTML = 0;
- let resultDiv = document.querySelector(".result > p");
+let resultDiv = document.querySelector(".result > p");
 
 
 function computerPlay() {
@@ -81,20 +79,18 @@ function playRound(playerSelection) {
 
 function gameOver() {
 
-  if (playerScore == 1){
+  if (document.getElementById("player-score").innerHTML == 5) {
     rockChoice.removeEventListener("click", playRock);
     paperChoice.removeEventListener("click", playPaper);
     scissorsChoice.removeEventListener("click", playScissors);
-    return "YOU WIN!!";
-  } else if (computerScore == 1) {
+    resultDiv.innerHTML = "YOU WIN!!";
+  } else if (document.getElementById("computer-score").innerHTML == 5) {
     rockChoice.removeEventListener("click", playRock);
     paperChoice.removeEventListener("click", playPaper);
     scissorsChoice.removeEventListener("click", playScissors);
-    return "YOU LOSE!!";
+    resultDiv.innerHTML = "YOU LOSE!!";
   } else {
-    console.log("You = " + playerScore);
-    console.log("Computer =  " + computerScore);
-    return "";
+
   }
 }
 
