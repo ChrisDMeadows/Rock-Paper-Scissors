@@ -1,6 +1,8 @@
 
-let playerScore = 0;
-let computerScore = 0;
+ let playerScore = document.getElementById("player-score").innerHTML = 0;
+ let computerScore = document.getElementById("computer-score").innerHTML = 0;
+ let resultDiv = document.querySelector(".result > p");
+
 
 function computerPlay() {
   let randomChoice = Math.floor(Math.random() * 3);
@@ -16,9 +18,9 @@ function computerPlay() {
   }
 }
       
-const rockChoice = document.getElementById("rock");
-const paperChoice = document.getElementById("paper");
-const scissorsChoice = document.getElementById("scissors");
+let rockChoice = document.getElementById("rock");
+let paperChoice = document.getElementById("paper");
+let scissorsChoice = document.getElementById("scissors");
   
 rockChoice.addEventListener("click", playRock);
 paperChoice.addEventListener("click", playPaper);
@@ -28,7 +30,7 @@ function playRock() {
   console.log("rock");
   let round = playRound("rock");
   console.log(round);
-  console.log(gameScore());
+  console.log(gameOver());
   return round;
 }
 
@@ -36,7 +38,7 @@ function playPaper() {
   console.log("paper");
   let round = playRound("paper");
   console.log(round);
-  console.log(gameScore());
+  console.log(gameOver());
   return round;
 }
 
@@ -44,7 +46,7 @@ function playScissors() {
   console.log("scissors");
   let round = playRound("scissors");
   console.log(round);
-  console.log(gameScore());
+  console.log(gameOver());
   return round;
 }
 
@@ -53,37 +55,38 @@ function playRound(playerSelection) {
   let computerSelection = computerPlay()
 
   if (playerSelection == computerSelection) {
-    return "Draw!";
+    resultDiv.innerHTML = "Draw!";
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    computerScore++;
-    return "You Lose! Paper beats Rock";
+    parseInt(document.getElementById("computer-score").innerHTML++);
+    resultDiv.innerHTML = "You Lose! Paper beats Rock";
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    playerScore++;
-    return "You Win! Rock beats Scissors";
+    parseInt(document.getElementById("player-score").innerHTML++);
+    resultDiv.innerHTML = "You Win! Rock beats Scissors";
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    computerScore++;
-    return "You Lose! Scissors beat Paper";
+    parseInt(document.getElementById("computer-score").innerHTML++);
+    resultDiv.innerHTML = "You Lose! Scissors beat Paper";
   } else if (playerSelection == "paper" && computerSelection == "rock") {
-    playerScore++;
-    return "You Win! Paper beats Rock";
+    parseInt(document.getElementById("player-score").innerHTML++);
+    resultDiv.innerHTML = "You Win! Paper beats Rock";
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    computerScore++;
-    return "You Lose! Rock beats Scissors";
+    parseInt(document.getElementById("computer-score").innerHTML++);
+    resultDiv.innerHTML = "You Lose! Rock beats Scissors";
   } else if (playerSelection == "scissors" && computerSelection == "paper") {
-    playerScore++;
-    return "You Win! Scissors beats Paper"; 
+    parseInt(document.getElementById("player-score").innerHTML++);
+    resultDiv.innerHTML = "You Win! Scissors beats Paper"; 
   } else {
     return "Error, selection not found";
   }
 }
 
-function gameScore() {
-  if (playerScore == 5){
+function gameOver() {
+
+  if (playerScore == 1){
     rockChoice.removeEventListener("click", playRock);
     paperChoice.removeEventListener("click", playPaper);
     scissorsChoice.removeEventListener("click", playScissors);
     return "YOU WIN!!";
-  } else if (computerScore == 5) {
+  } else if (computerScore == 1) {
     rockChoice.removeEventListener("click", playRock);
     paperChoice.removeEventListener("click", playPaper);
     scissorsChoice.removeEventListener("click", playScissors);
@@ -94,3 +97,4 @@ function gameScore() {
     return "";
   }
 }
+
